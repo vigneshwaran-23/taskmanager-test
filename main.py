@@ -11,7 +11,10 @@ from typing import List
 
 # ----- CONFIG -----
 app = FastAPI(title="Task Manager with Auth")
-SQLALCHEMY_DATABASE_URL = "sqlite:///./taskmanager.db"  # change to PostgreSQL URL after
+import os
+
+SQLALCHEMY_DATABASE_URL = os.getenv("DATABASE_URL")
+
 SECRET_KEY = "supersecretkey"  # use env var in production
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
